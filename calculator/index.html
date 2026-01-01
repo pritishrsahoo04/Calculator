@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calc.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.js"></script> 
+    <!-- Included the math.js library in my HTML. You can download it or include it from a CDN. Added the above line in the head section of your HTML. This is for correct decimal operations. -->
+
+</head>
+<body>
+    <background class="color">
+         <video autoplay loop muted plays-inline id="bgclip">
+            <source src="2646392-hd_1920_1080_30fps.mp4" type="video/mp4">
+        </video>
+        <h2 id="head">CALCULATOR</h2>
+    </background>
+    <p id="name">let's calculate</p>
+    <form action="" name="clc" class="form">
+        <input type="text" name="display" id="calc1"><br>
+        <input type="button" id="calc" value="0" onclick="clc.display.value +='0'">
+        <input type="button" id="calc" value="1" onclick="clc.display.value +='1'">
+        <input type="button" id="calc" value="2" onclick="clc.display.value +='2'">
+        <input type="button" id="calc" value="+" onclick="clc.display.value +='+'"><br>
+        <input type="button" id="calc" value="3" onclick="clc.display.value +='3'">
+        <input type="button" id="calc" value="4" onclick="clc.display.value +='4'">
+        <input type="button" id="calc" value="5" onclick="clc.display.value +='5'">
+        <input type="button" id="calc" value="-" onclick="clc.display.value +='-'"><br>
+        <input type="button" id="calc" value="6" onclick="clc.display.value +='6'">
+        <input type="button" id="calc" value="7" onclick="clc.display.value +='7'">
+        <input type="button" id="calc" value="8" onclick="clc.display.value +='8'">
+        <input type="button" id="calc" value="&times" onclick="clc.display.value +='*'"><br>
+        <input type="button" id="calc" value="C" onclick="clc.display.value = ''">
+        <input type="button" id="calc" value="9" onclick="clc.display.value +='9'">
+        <input type="button" id="calc" value="." onclick="clc.display.value +='.'">
+        <input type="button" id="calc" value="/" onclick="clc.display.value +='/'"><br>
+        <input type="button" id="calc" value="=" onclick="clc.display.value= eval(clc.display.value)">
+
+
+    </form>
+    <!-- Modifying my JavaScript code to use math.js for calculations. With this modification, math.evaluate from math.js is used for calculations, providing more precise results without introducing rounding. -->
+    <script>
+        function appendToDisplay(value) {
+            document.clc.display.value += value;
+        }
+    
+        function clearDisplay() {
+            document.clc.display.value = '';
+        }
+    
+        function calculateResult() {
+            try {
+                const result = math.evaluate(document.clc.display.value);
+                document.clc.display.value = result;
+            } catch (error) {
+                document.clc.display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
